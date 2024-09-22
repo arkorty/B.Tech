@@ -42,14 +42,10 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-int partition(int arr[], int low, int high) {
-    // Randomly pick a pivot element within the subarray
-    srand(time(NULL));
-    int pivot_index = low + rand() % (high - low + 1);
-    swap(&arr[pivot_index], &arr[high]);
-
+int lomuto_partition(int arr[], int low, int high) {
+    // Choose the rightmost element as pivot
     int pivot = arr[high];
-    int i = (low - 1);
+    int i = low - 1;
 
     for (int j = low; j < high; j++) {
         if (arr[j] <= pivot) {
@@ -57,23 +53,28 @@ int partition(int arr[], int low, int high) {
             swap(&arr[i], &arr[j]);
         }
     }
-
     swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+    return i + 1;
 }
 
-void quicksort_recursive(int arr[], int low, int high) {
+void quicksort(int arr[], int low, int high) {
     if (low < high) {
-        int pi = partition(arr, low, high);
-        quicksort_recursive(arr, low, pi - 1);
-        quicksort_recursive(arr, pi + 1, high);
+        // Randomly choose pivot
+        int random_pivot = low + rand() % (high - low + 1);
+        swap(&arr[random_pivot], &arr[high]);
+
+        int pivot_index = lomuto_partition(arr, low, high);
+
+        quicksort(arr, low, pivot_index - 1);
+        quicksort(arr, pivot_index + 1, high);
     }
 }
 
-void quicksort(int arr[], int n) {
-    if (arr != NULL && n > 0) {
-        quicksort_recursive(arr, 0, n - 1);
+void print_array(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
     }
+    printf("\n");
 }
 
 int main() {
@@ -81,18 +82,13 @@ int main() {
     int n = sizeof(arr) / sizeof(arr[0]);
 
     printf("Unsorted array: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    print_array(arr, n);
 
-    quicksort(arr, n);
+    srand(time(NULL)); // Seed the random number generator
+    quicksort(arr, 0, n - 1);
 
-    printf("Sorted array: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    printf("Sorted array:   ");
+    print_array(arr, n);
 
     return 0;
 }
