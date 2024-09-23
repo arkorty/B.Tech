@@ -1,3 +1,39 @@
+# Problems
+
+Here are 15 C programming questions focused on string manipulation, structs, unions, dynamic allocation, and linked lists:
+
+### **String Manipulation:**
+
+1. Write a function to reverse a given string in place.
+2. Write a function that checks if a string is a palindrome.
+3. Write a function to find the first non-repeating character in a string.
+4. Write a function to remove all spaces from a string.
+5. Write a function to find the longest word in a given string.
+
+### **Structs:**
+
+6. Define a `Student` struct and write a function to print the details of a student.
+7. Write a function that sorts an array of `Employee` structs by salary.
+8. Create a `Date` struct and write a function to calculate the difference between two dates.
+
+### **Unions:**
+
+9. Define a union that can store an `int`, `float`, or `char`. Write a program to demonstrate accessing different members.
+10. Write a program that uses a union to store either a `double` or a string, and print the correct value based on the data type.
+
+### **Dynamic Memory Allocation:**
+
+11. Write a function to dynamically allocate memory for an array of integers and initialize it with random values.
+12. Write a function to concatenate two dynamically allocated strings.
+13. Write a function to create a dynamic 2D array and initialize it with zeroes.
+
+### **Linked Lists:**
+
+14. Write a function to insert a node at the end of a singly linked list.
+15. Write a function to reverse a singly linked list.
+
+These questions will help cover various key concepts in C programming!
+
 # Dynamic Memory Allocation & Data Structures
 
 ---
