@@ -1,97 +1,59 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 
-#define BUFFER_SIZE 5 // Define the buffer size
+#define N 5 // buffer size
+int buf[N]; // shared buffer
+int in = 0, out = 0;
 
-// Shared buffer and related variables
-int buffer[BUFFER_SIZE];
-int in = 0;  // Index for the next producer slot
-int out = 0; // Index for the next consumer slot
+sem_t empty, full, mutex;
 
-// Semaphores
-sem_t empty; // Semaphore to count empty slots in buffer
-sem_t full;  // Semaphore to count full slots in buffer
-sem_t mutex; // Mutex for mutual exclusion when accessing buffer
+void *prod(void *_) {
+    int item = 1;
+    for (int i = 0; i < 10; ++i) {
+        sem_wait(&empty); // wait for empty slot
+        sem_wait(&mutex); // enter critical section
 
-// Producer function
-void *producer(void *arg) {
-    for (int i = 0; i < 10; ++i) { // Produce 10 items
-        int item = rand() % 100;   // Produce a random item
+        buf[in] = item++; // add item to buffer
+        printf("P: %d\n", buf[in]);
+        in = (in + 1) % N;
 
-        // Wait for an empty slot
-        sem_wait(&empty);
+        sem_post(&mutex); // exit critical section
+        sem_post(&full);  // signal item added
 
-        // Enter critical section (protect buffer access)
-        sem_wait(&mutex);
-
-        // Produce an item and place it in the buffer
-        buffer[in] = item;
-        printf("Produced: %d\n", item);
-        in = (in + 1) % BUFFER_SIZE;
-
-        // Exit critical section
-        sem_post(&mutex);
-
-        // Signal that there is a new full slot
-        sem_post(&full);
-
-        // Sleep to simulate time taken to produce an item
-        usleep(rand() % 1000);
+        sleep(1); // wait a bit
     }
-
     return NULL;
 }
 
-// Consumer function
-void *consumer(void *arg) {
-    for (int i = 0; i < 10; ++i) { // Consume 10 items
-        int item;
+void *cons(void *_) {
+    for (int i = 0; i < 10; ++i) {
+        sem_wait(&full);  // wait for item
+        sem_wait(&mutex); // enter critical section
 
-        // Wait for a full slot
-        sem_wait(&full);
+        printf("C: %d\n", buf[out]);
+        out = (out + 1) % N;
 
-        // Enter critical section (protect buffer access)
-        sem_wait(&mutex);
+        sem_post(&mutex); // exit critical section
+        sem_post(&empty); // signal slot freed
 
-        // Consume an item from the buffer
-        item = buffer[out];
-        printf("Consumed: %d\n", item);
-        out = (out + 1) % BUFFER_SIZE;
-
-        // Exit critical section
-        sem_post(&mutex);
-
-        // Signal that there is a new empty slot
-        sem_post(&empty);
-
-        // Sleep to simulate time taken to consume an item
-        usleep(rand() % 1000);
+        sleep(2); // wait a bit
     }
-
     return NULL;
 }
 
-int main() {
-    // Initialize semaphores
-    sem_init(&empty, 0, BUFFER_SIZE); // All buffer slots are initially empty
-    sem_init(&full, 0, 0);            // No items are initially in the buffer
-    sem_init(&mutex, 0, 1);           // Mutex is initially available (1)
+int main(void) {
+    // init semaphores
+    sem_init(&empty, 0, N); // N empty slots
+    sem_init(&full, 0, 0);  // 0 full slots
+    sem_init(&mutex, 0, 1); // binary semaphore
 
-    // Create threads for producer and consumer
-    pthread_t producer_thread, consumer_thread;
-    pthread_create(&producer_thread, NULL, producer, NULL);
-    pthread_create(&consumer_thread, NULL, consumer, NULL);
-
-    // Wait for threads to finish
-    pthread_join(producer_thread, NULL);
-    pthread_join(consumer_thread, NULL);
-
-    // Destroy semaphores
-    sem_destroy(&empty);
-    sem_destroy(&full);
-    sem_destroy(&mutex);
+    // create threads
+    pthread_t p, c;
+    pthread_create(&p, NULL, prod, NULL);
+    pthread_create(&c, NULL, cons, NULL);
+    pthread_join(p, NULL);
 
     return 0;
 }

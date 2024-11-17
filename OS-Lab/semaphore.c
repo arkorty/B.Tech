@@ -9,7 +9,7 @@ int shared_var = 0;
 sem_t sem;
 
 // Function for incrementing the shared variable
-void *increment(void *arg) {
+void *increment() {
     for (int i = 0; i < 10; i++) {
         // Wait (decrease) semaphore
         sem_wait(&sem);
@@ -25,7 +25,7 @@ void *increment(void *arg) {
 }
 
 // Function for decrementing the shared variable
-void *decrement(void *arg) {
+void *decrement() {
     for (int i = 0; i < 10; i++) {
         // Wait (decrease) semaphore
         sem_wait(&sem);
