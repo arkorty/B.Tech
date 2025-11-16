@@ -1,5 +1,5 @@
-Q1: PCCST601 0000182: Explain the different phases of compilation with a suitable example?
-A1: The compilation process is a sequence of phases that transform a high-level source code into low-level machine code. Each phase takes the output of the previous phase as input. The main phases are:
+### Q1: PCCST601 0000182: Explain the different phases of compilation with a suitable example?
+The compilation process is a sequence of phases that transform a high-level source code into low-level machine code. Each phase takes the output of the previous phase as input. The main phases are:
     1.  **Lexical Analysis:** The source code is scanned to break it into a series of tokens. For example, `position = initial + rate * 60` is broken into tokens: `position` (identifier), `=` (operator), `initial` (identifier), `+` (operator), `rate` (identifier), `*` (operator), `60` (number).
     2.  **Syntax Analysis (Parsing):** The tokens are arranged into a hierarchical structure called a parse tree (or syntax tree) that represents the grammatical structure of the source code.
     3.  **Semantic Analysis:** The parse tree is checked for semantic consistency with the language rules. This includes type checking and ensuring variables are declared before use. For the example, it would check if `initial` and `rate` are declared numeric types and convert the integer `60` to a floating-point number if `rate` is a float.
@@ -14,8 +14,8 @@ A1: The compilation process is a sequence of phases that transform a high-level 
     6.  **Code Generation:** The final phase generates the target machine code or assembly code from the optimized intermediate code. This involves register allocation and instruction selection.
     **Symbol Table Management:** This runs concurrently with all phases, storing information about identifiers (variables, functions, etc.) like their type and scope.
 
-Q2: PCCST601 0000183: Explain how the following expression is translated via different phases of compilation using a suitable diagram: position = initial + rate * 60
-A2: The translation of `position = initial + rate * 60` through the phases of compilation is as follows:
+### Q2: PCCST601 0000183: Explain how the following expression is translated via different phases of compilation using a suitable diagram: position = initial + rate * 60
+The translation of `position = initial + rate * 60` through the phases of compilation is as follows:
     1.  **Lexical Analyzer:** Breaks the expression into a stream of tokens: `<id, 'position'>` `<=>` `<id, 'initial'>` `<+>` `<id, 'rate'>` `<*>` `<number, 60>`.
     2.  **Syntax Analyzer:** Creates a parse tree from the tokens, following the rules of grammar to establish operator precedence (multiplication before addition).
         ```
@@ -45,14 +45,13 @@ A2: The translation of `position = initial + rate * 60` through the phases of co
         STF position, R1
         ```
 
-Q3: PCCST601 0000184: Write short note on any three of the following: i. Three-address code ii. Syntax tree iii. Symbol table iv. Lexical analysis v. Back end compilation
-A3:
+### Q3: PCCST601 0000184: Write short note on any three of the following: i. Three-address code ii. Syntax tree iii. Symbol table iv. Lexical analysis v. Back end compilation
     **i. Three-Address Code:** This is a type of intermediate code representation used by compilers where each instruction has at most three operands. A typical instruction is of the form `result = arg1 op arg2`. This format is useful because it breaks down complex expressions into a sequence of simple, manageable instructions, making it easier to perform optimizations and translate into machine code.
     **ii. Syntax Tree:** An Abstract Syntax Tree (AST) is a tree representation of the syntactic structure of source code. Each node denotes a construct, with the tree's structure following the grammar of the language. It is "abstract" because it omits details like parentheses and other syntactic sugar. The AST is created by the parser and is a primary data structure for all subsequent compiler phases.
     **iii. Symbol Table:** A symbol table is a data structure used by a compiler to store information about all identifiers in a program (e.g., variables, functions). The information includes the identifier's name, type, scope, and memory location. It is essential for semantic analysis (e.g., type checking) and code generation.
 
-Q4: PCCST601 0000185: What do you mean by Symbol Table? Explain the different operations/methods that can be performed on a Symbol Table? What are the different ways to implement Symbol Table? Explain each category in detail.
-A4: A **Symbol Table** is a crucial data structure used by a compiler to keep track of identifiers and their attributes (like type, scope, memory location).
+### Q4: PCCST601 0000185: What do you mean by Symbol Table? Explain the different operations/methods that can be performed on a Symbol Table? What are the different ways to implement Symbol Table? Explain each category in detail.
+A **Symbol Table** is a crucial data structure used by a compiler to keep track of identifiers and their attributes (like type, scope, memory location).
     **Operations on a Symbol Table:**
     1.  **Insert/Enter:** Adds a new identifier to the table when a new variable or function is declared.
     2.  **Lookup/Find:** Searches for an identifier to retrieve its attributes, which is essential for checking declarations and types.
@@ -64,8 +63,8 @@ A4: A **Symbol Table** is a crucial data structure used by a compiler to keep tr
     3.  **Binary Search Tree (BST):** Keeps identifiers sorted, which can be useful. Lookup and insertion times are O(log n) on average for a balanced tree.
     4.  **Scope-based Symbol Tables:** For block-structured languages, a stack of hash tables is often used. A new table is pushed for a new scope and popped when the scope is exited, naturally handling variable visibility.
 
-Q5: PCCST601 0000186: What do you mean by ambiguity of a grammar? Explain with a suitable example? Consider the following grammar, show that the string 'aa+a' can be generated by this grammar? Construct the parse tree? S -> S + S | S S * | a
-A5: A grammar is **ambiguous** if it can produce more than one parse tree for a single string. This means the string's syntactic structure is not uniquely defined.
+### Q5: PCCST601 0000186: What do you mean by ambiguity of a grammar? Explain with a suitable example? Consider the following grammar, show that the string 'aa+a' can be generated by this grammar? Construct the parse tree? S -> S + S | S S * | a
+A grammar is **ambiguous** if it can produce more than one parse tree for a single string. This means the string's syntactic structure is not uniquely defined.
     
 The production `S S *` in the question appears to be a typo, likely for `S * S`. Assuming this correction, the string 'a+a*a' can be generated.
     **Leftmost Derivation (assuming S -> S * S):**
@@ -85,8 +84,8 @@ The production `S S *` in the question appears to be a typo, likely for `S * S`.
           a   a
     ```
 
-Q6: PCCST601 0000187: What do you mean by ambiguity of a grammar? Explain with a suitable example? Consider the following grammar, show that the string '() ()' can be generated by this grammar? Construct the parse tree? S -> ( S ) | S S | a
-A6: A grammar is **ambiguous** if a string can have more than one parse tree, meaning its structure is not uniquely defined.
+### Q6: PCCST601 0000187: What do you mean by ambiguity of a grammar? Explain with a suitable example? Consider the following grammar, show that the string '() ()' can be generated by this grammar? Construct the parse tree? S -> ( S ) | S S | a
+A grammar is **ambiguous** if a string can have more than one parse tree, meaning its structure is not uniquely defined.
     The grammar `S -> ( S ) | S S | a` cannot generate the string `'() ()'` because it has no rule to produce an empty string (`ε`) inside the parentheses. If we assume the rule `S -> a` was intended to be `S -> ε` (a common pattern for base cases), then a derivation is possible.
     **Derivation for '() ()' (assuming S -> ε):**
     1. `S -> S S`
@@ -106,8 +105,8 @@ A6: A grammar is **ambiguous** if a string can have more than one parse tree, me
     ```
     *(Note: The question is ill-formed. The provided grammar generates strings like `(a)(a)` but not `()()`. The answer assumes a corrected grammar `S -> (S) | SS | ε`.)*
 
-Q7: PCCST601 0000188: Consider the following grammar and draw the LR(0) automaton: S -> L = R | L, L -> *R | id, R -> L
-A7: The LR(0) automaton is a set of states (item sets) connected by GOTO transitions. The augmented grammar is `S' -> S`.
+### Q7: PCCST601 0000188: Consider the following grammar and draw the LR(0) automaton: S -> L = R | L, L -> *R | id, R -> L
+The LR(0) automaton is a set of states (item sets) connected by GOTO transitions. The augmented grammar is `S' -> S`.
     - **I0:** `CLOSURE({S' -> .S})` = `{ S' -> .S, S -> .L=R, S -> .L, L -> .*R, L -> .id, R -> .L }`
     - **I1:** `GOTO(I0, S)` = `{ S' -> S. }` (Accept)
     - **I2:** `GOTO(I0, L)` = `CLOSURE({S -> L.=R, S -> L., R -> L.})` = `{ S -> L.=R, S -> L., R -> L. }`
@@ -119,8 +118,8 @@ A7: The LR(0) automaton is a set of states (item sets) connected by GOTO transit
     - **I8:** `GOTO(I5, R)` = `{ S -> L=R. }`
     - **I9:** `GOTO(I5, L)` = `{ R -> L. }` (Same as I7)
 
-Q8: PCCST601 0000189: Show that SLR parser can not be constructed for the following grammar. Consider the following LR(0) automaton for constructing the SLR parsing table. S -> L = R | L, L -> *R | id, R -> L
-A8: An SLR parser cannot be constructed if there is a shift-reduce or reduce-reduce conflict in any state of the LR(0) automaton.
+### Q8: PCCST601 0000189: Show that SLR parser can not be constructed for the following grammar. Consider the following LR(0) automaton for constructing the SLR parsing table. S -> L = R | L, L -> *R | id, R -> L
+An SLR parser cannot be constructed if there is a shift-reduce or reduce-reduce conflict in any state of the LR(0) automaton.
     First, we determine the necessary `FOLLOW` sets.
     `FOLLOW(S) = { $ }`
     `FOLLOW(R) = FOLLOW(S) U FOLLOW(L) = { $ } U FOLLOW(L)`
@@ -136,8 +135,8 @@ A8: An SLR parser cannot be constructed if there is a shift-reduce or reduce-red
 
     Because the parser has conflicting actions (shift and reduce) in the same state (`I2`) on the same lookahead (`=`), the grammar is not SLR(1).
 
-Q9: PCCST601 0000190: Construct the LR(1) automaton for the following grammar: S' -> S, S -> CC, C -> cC | d
-A9: The LR(1) automaton consists of LR(1) items `[production, lookahead]`.
+### Q9: PCCST601 0000190: Construct the LR(1) automaton for the following grammar: S' -> S, S -> CC, C -> cC | d
+The LR(1) automaton consists of LR(1) items `[production, lookahead]`.
     - **I0:** `CLOSURE({[S' -> .S, $]})` = `{ [S' -> .S, $], [S -> .CC, $], [C -> .cC, c/d], [C -> .d, c/d] }`
     - **I1:** `GOTO(I0, S)` = `{ [S' -> S., $] }` (Accept)
     - **I2:** `GOTO(I0, C)` = `CLOSURE({[S -> C.C, $]})` = `{ [S -> C.C, $], [C -> .cC, $], [C -> .d, $] }`
@@ -153,7 +152,7 @@ A9: The LR(1) automaton consists of LR(1) items `[production, lookahead]`.
     - `GOTO(I6, c)` is `I6` itself.
     - `GOTO(I6, d)` is `I7`.
 
-Q10: PCCST601 0000192: Show that the string 'id + id * id' has two distinct leftmost derivation for the following grammar. Draw both parse trees by showing the construction at every step of the derivation. E -> E + E | E * E | ( E ) | id
+### Q10: PCCST601 0000192: Show that the string 'id + id * id' has two distinct leftmost derivation for the following grammar. Draw both parse trees by showing the construction at every step of the derivation. E -> E + E | E * E | ( E ) | id
 A10: The grammar is ambiguous because a string can have more than one leftmost derivation, leading to different parse trees.
     **Leftmost Derivation 1 (corresponds to `id + (id * id)`):**
     1. `E -> E + E`
@@ -189,8 +188,7 @@ A10: The grammar is ambiguous because a string can have more than one leftmost d
     ```
     Since two different leftmost derivations (and two different parse trees) exist for the same string, the grammar is ambiguous.
 
-Q11: PCCST601 0000193: Consider the following grammar, S -> S + S | S * S | a. Show the leftmost derivation of string 'a+a*a'? Show the rightmost derivation of string 'a+a*a'? Draw the parse tree? Is the grammar ambiguous or unambiguous?
-A11:
+### Q11: PCCST601 0000193: Consider the following grammar, S -> S + S | S * S | a. Show the leftmost derivation of string 'a+a*a'? Show the rightmost derivation of string 'a+a*a'? Draw the parse tree? Is the grammar ambiguous or unambiguous?
     **a) Leftmost Derivation:**
     `S -> S + S`
     `-> a + S`
@@ -208,14 +206,13 @@ A11:
     **Tree 2 (from RMD):** `*` is the root.
     **d) Ambiguity:** The grammar is **ambiguous** because the string `a+a*a` has two different parse trees, as shown by the different leftmost and rightmost derivations.
 
-Q12: PCCST601 0000194: Write down the regular expression for the following language: Set of all strings whose lengths are divisible by 3, over $\Sigma$={a,b}. Set of all strings that begin with 'ab' over $\Sigma$={a,b}. Set of all strings that ends with 'ab' over $\Sigma$={a,b}.
-A12:
+### Q12: PCCST601 0000194: Write down the regular expression for the following language: Set of all strings whose lengths are divisible by 3, over $\Sigma$={a,b}. Set of all strings that begin with 'ab' over $\Sigma$={a,b}. Set of all strings that ends with 'ab' over $\Sigma$={a,b}.
     *   **Set of all strings whose lengths are divisible by 3:** `((a|b)(a|b)(a|b))*`
     *   **Set of all strings that begin with 'ab':** `ab(a|b)*`
     *   **Set of all strings that ends with 'ab':** `(a|b)*ab`
 
-Q13: PCCST601 0000195: Consider the following grammar, S -> (S | S [S] | a. Show the leftmost derivation of string (a [a] a )?. Show the rightmost derivation of string ( a [a] a )?. Draw the parse tree?
-A13: *(Note: The question is ill-formed due to likely typos in both the grammar and the target string. The answer assumes the grammar was intended to be `S -> (S) | S[S] | a` and the target string was `(a[a])`.)*
+### Q13: PCCST601 0000195: Consider the following grammar, S -> (S | S [S] | a. Show the leftmost derivation of string (a [a] a )?. Show the rightmost derivation of string ( a [a] a )?. Draw the parse tree?
+*(Note: The question is ill-formed due to likely typos in both the grammar and the target string. The answer assumes the grammar was intended to be `S -> (S) | S[S] | a` and the target string was `(a[a])`.)*
     Assuming the corrected grammar `S -> (S) | S[S] | a` and string `(a[a])`:
     **Leftmost Derivation for `(a[a])`:**
     `S -> (S)`
@@ -238,13 +235,12 @@ A13: *(Note: The question is ill-formed due to likely typos in both the grammar 
         a  a
     ```
 
-Q14: PCCST601 0000196: Find the regular expressions of the following languages; Set of all strings over $\Sigma$ = {a, b} such that all the strings begin and end with different symbols. Set of all strings over $\Sigma$ = {a, b} such that all the strings begin and end with same symbol.
-A14:
+### Q14: PCCST601 0000196: Find the regular expressions of the following languages; Set of all strings over $\Sigma$ = {a, b} such that all the strings begin and end with different symbols. Set of all strings over $\Sigma$ = {a, b} such that all the strings begin and end with same symbol.
     *   **Begin and end with different symbols:** `a(a|b)*b | b(a|b)*a`
     *   **Begin and end with same symbol:** `a | b | a(a|b)*a | b(a|b)*b`
 
-Q15: PCCST601 0000197: Remove the left recursion from the following grammar S -> S + S | S&S | !S | (S) | i&i | i<i | i4A, S -> Sa | aSSb | $\epsilon$
-A15: This question lists two separate grammars.
+### Q15: PCCST601 0000197: Remove the left recursion from the following grammar S -> S + S | S&S | !S | (S) | i&i | i<i | i4A, S -> Sa | aSSb | $\epsilon$
+This question lists two separate grammars.
     **Grammar 1:** `S -> S + S | S&S | !S | (S) | i&i | i<i | i4A`
     This has direct left recursion. Assuming `i4A` is a terminal-like token.
     `S -> S(+S | &S) | !S | (S) | i&i | i<i | i4A`
@@ -258,8 +254,7 @@ A15: This question lists two separate grammars.
     `S -> (aSSb | ε) S'`
     `S' -> a S' | ε`
 
-Q16: PCCST601 0000198: Remove the left recursion from the following grammar A -> Ab | aC, B -> BaBB | BA, C -> bC | BA
-A16:
+### Q16: PCCST601 0000198: Remove the left recursion from the following grammar A -> Ab | aC, B -> BaBB | BA, C -> bC | BA
     **For production A:** `A -> Ab | aC` becomes:
     `A -> aC A'`
     `A' -> b A' | ε`
@@ -272,8 +267,8 @@ A16:
     `B -> BA B'`, `B' -> aBB B' | ε`
     `C -> bC | BA`
 
-Q17: PCCST601 0000199: Remove the left recursion from the following grammar S -> Aa | Bb, A -> Aa | Abc | c | Sb, B -> bb
-A17: The grammar has indirect left recursion (`S -> Aa -> Sba...`).
+### Q17: PCCST601 0000199: Remove the left recursion from the following grammar S -> Aa | Bb, A -> Aa | Abc | c | Sb, B -> bb
+The grammar has indirect left recursion (`S -> Aa -> Sba...`).
     1.  Substitute `S` into `A`:
         `A -> Aa | Abc | c | (Aa | Bb)b`
         `A -> Aa | Abc | c | Aab | Bbb`
@@ -288,8 +283,8 @@ A17: The grammar has indirect left recursion (`S -> Aa -> Sba...`).
     `A -> c A' | Bbb A'`
     `A' -> a A' | bc A' | ab A' | ε`
 
-Q18: PCCST601 0000200: Remove the left recursion from the following grammar S -> A a | b, A -> S S | 1
-A18: This grammar has indirect left recursion: `S -> Aa -> SSa`.
+### Q18: PCCST601 0000200: Remove the left recursion from the following grammar S -> A a | b, A -> S S | 1
+This grammar has indirect left recursion: `S -> Aa -> SSa`.
     1.  Substitute `A` into `S`:
         `S -> (SS | 1)a | b`
         `S -> SSa | a | b`
@@ -301,14 +296,13 @@ A18: This grammar has indirect left recursion: `S -> Aa -> SSa`.
     `S' -> Sa S' | ε`
     `A -> S S | 1`
 
-Q19: PCCST601 0000201: Remove the left recursion from the following grammar S -> Abc, A -> Aa | Ad | b, B -> Bd | e, C -> Cc | g
-A19:
+### Q19: PCCST601 0000201: Remove the left recursion from the following grammar S -> Abc, A -> Aa | Ad | b, B -> Bd | e, C -> Cc | g
     - **For A:** `A -> A(a | d) | b` becomes `A -> b A'`, `A' -> a A' | d A' | ε`
     - **For B:** `B -> B(d) | e` becomes `B -> e B'`, `B' -> d B' | ε`
     - **For C:** `C -> C(c) | g` becomes `C -> g C'`, `C' -> c C' | ε`
     The production `S -> Abc` is not left recursive. The final grammar is a combination of these new productions.
 
-Q20: PCCST601 0000202: Construct the predictive parsing table to check if the grammar is LL(1) or not? S -> aABb, A -> c | $\epsilon$, B -> d | $\epsilon$
+### Q20: PCCST601 0000202: Construct the predictive parsing table to check if the grammar is LL(1) or not? S -> aABb, A -> c | $\epsilon$, B -> d | $\epsilon$
 A20: To construct the table, we need FIRST and FOLLOW sets.
     **FIRST sets:** `FIRST(A) = {c, ε}`, `FIRST(B) = {d, ε}`, `FIRST(S) = {a}`
     **FOLLOW sets:**
@@ -323,20 +317,20 @@ A20: To construct the table, we need FIRST and FOLLOW sets.
     | **B** | | B -> ε | | B -> d | |
     **Is the grammar LL(1)?** Yes. There are no cells in the parsing table with multiple entries, so the grammar is LL(1).
 
-Q21: PCCST601 0000203: Construct the predictive parsing table and parse the string "ab" by using the parsing table. S -> AaAb | BbBa, A -> $\epsilon$, B -> $\epsilon$
-A21: The grammar as written is ambiguous and not LL(1). `S` can derive `ab` via `S -> AaAb -> a(ε)Ab -> aAb -> a(ε)b -> ab`. It can derive `ba` via `S -> BbBa`. 
+### Q21: PCCST601 0000203: Construct the predictive parsing table and parse the string "ab" by using the parsing table. S -> AaAb | BbBa, A -> $\epsilon$, B -> $\epsilon$
+The grammar as written is ambiguous and not LL(1). `S` can derive `ab` via `S -> AaAb -> a(ε)Ab -> aAb -> a(ε)b -> ab`. It can derive `ba` via `S -> BbBa`. 
     An LL(1) parser cannot be constructed. For example, `FIRST(AaAb) = {a}` and `FIRST(BbBa) = {b}`. This seems fine. But `A -> ε` and `B -> ε`.
     `FOLLOW(A) = FIRST(Ab) = {a}`. Also `S -> AaAb`, so `FOLLOW(A)` gets `FIRST(b)={b}`. `FOLLOW(A) = {a,b}`.
     `FOLLOW(B) = FIRST(bBa) = {b}`. Also `S -> BbBa`, so `FOLLOW(B)` gets `FIRST(a)={a}`. `FOLLOW(B) = {a,b}`.
     The table would have entries for `A -> ε` under both `a` and `b`, and for `B -> ε` under both `a` and `b`.
     The question is flawed as the grammar is not LL(1). A predictive parser cannot be deterministically constructed.
 
-Q22: PCCST601 0000204: Prove that the following grammar is LL(1). Parse the string 'aa$' by using the parsing table. S -> SA | A, A -> a
-A22: The premise of the question is false. The grammar `S -> SA | A` is **left-recursive**. A grammar that has left recursion **cannot** be LL(1). A predictive parser requires a non-left-recursive grammar.
+### Q22: PCCST601 0000204: Prove that the following grammar is LL(1). Parse the string 'aa$' by using the parsing table. S -> SA | A, A -> a
+The premise of the question is false. The grammar `S -> SA | A` is **left-recursive**. A grammar that has left recursion **cannot** be LL(1). A predictive parser requires a non-left-recursive grammar.
     Even after eliminating left recursion (`S -> A S'`, `S' -> A S' | ε`), the resulting grammar (`S -> aS'`, `S' -> aS' | ε`) is still not LL(1) because of a FIRST/FOLLOW conflict in the `S'` production.
 
-Q23: PCCST601 0000205: Construct the predictive parsing table to check if the grammar is LL(1) or not. (Grammar: E $\to$ TE', E' $\to$ +TE' | $\epsilon$, T $\to$ FT', T' $\to$ *FT' | $\epsilon$, F $\to$ (E) | id)
-A23: This is the classic expression grammar, designed to be LL(1).
+### Q23: PCCST601 0000205: Construct the predictive parsing table to check if the grammar is LL(1) or not. (Grammar: E $\to$ TE', E' $\to$ +TE' | $\epsilon$, T $\to$ FT', T' $\to$ *FT' | $\epsilon$, F $\to$ (E) | id)
+This is the classic expression grammar, designed to be LL(1).
     **FIRST sets:** `FIRST(F) = {(, id}`, `FIRST(T') = {*, ε}`, `FIRST(T) = {(, id}`, `FIRST(E') = {+, ε}`, `FIRST(E) = {(, id}`.
     **FOLLOW sets:** `FOLLOW(E) = {$, )}`, `FOLLOW(E') = {$, )}`, `FOLLOW(T) = {+, $, )}`, `FOLLOW(T') = {+, $, )}`, `FOLLOW(F) = {* , +, $, )}`.
     **Predictive Parsing Table:**
@@ -349,8 +343,8 @@ A23: This is the classic expression grammar, designed to be LL(1).
     | **F** | F -> id | | | F -> (E) | | |
     **Is the grammar LL(1)?** Yes. No cell in the table contains more than one production, so the grammar is LL(1).
 
-Q24: PCCST601 0000206: Construct the predictive parsing table to check if the grammar is LL(1) or not. (Grammar: S $\to$ iCtS | iCtSeS | a, C $\to$ b)
-A24: The grammar has a common prefix `iCtS`. We must left-factor it:
+### Q24: PCCST601 0000206: Construct the predictive parsing table to check if the grammar is LL(1) or not. (Grammar: S $\to$ iCtS | iCtSeS | a, C $\to$ b)
+The grammar has a common prefix `iCtS`. We must left-factor it:
     `S -> iCtS S' | a`
     `S' -> eS | ε`
     `C -> b`
@@ -363,8 +357,8 @@ A24: The grammar has a common prefix `iCtS`. We must left-factor it:
     - `S' -> ε` is an epsilon production, so we must apply it on any lookahead in `FOLLOW(S')`. Since `e` is in `FOLLOW(S')`, this tells us to apply `S' -> ε` on lookahead `e`.
     Because we have two choices (`S' -> eS` and `S' -> ε`) on the same lookahead (`e`), the grammar is **not LL(1)**.
 
-Q25: PCCST601 0000209: Parse the following string ' (id) * id' by shift-reduce parsing method indicating the input string, stack entry and action taken at each step. Use the following grammar and SLR parsing table: (Grammar: E $\to$ E + T | T, T $\to$ T * F | F, F $\to$ (E) | id)
-A25: The parse requires an SLR parsing table, which is assumed. The steps are:
+### Q25: PCCST601 0000209: Parse the following string ' (id) * id' by shift-reduce parsing method indicating the input string, stack entry and action taken at each step. Use the following grammar and SLR parsing table: (Grammar: E $\to$ E + T | T, T $\to$ T * F | F, F $\to$ (E) | id)
+The parse requires an SLR parsing table, which is assumed. The steps are:
     | Stack | Input | Action |
     | :--- | :--- | :--- |
     | $ | `(id) * id$` | Shift |
@@ -382,8 +376,7 @@ A25: The parse requires an SLR parsing table, which is assumed. The steps are:
     | $T | `$` | Reduce: E -> T |
     | $E | `$` | Accept |
 
-Q26: PCCST601 0000210: Remove the left recursion from the following grammar. Construct the predictive parsing table of the grammar obtained after removing the left recursion. Is the grammar LL(1)? justify (Grammar: A$\to$Ac | Aad |bd |$\epsilon$)
-A26:
+### Q26: PCCST601 0000210: Remove the left recursion from the following grammar. Construct the predictive parsing table of the grammar obtained after removing the left recursion. Is the grammar LL(1)? justify (Grammar: A$\to$Ac | Aad |bd |$\epsilon$)
     **1. Remove Left Recursion:**
     The grammar `A -> Ac | Aad | bd | ε` is left-recursive.
     Factored form: `A -> A(c | ad) | (bd | ε)`.
@@ -405,31 +398,31 @@ A26:
     The intersection is `{c}`, which is non-empty.
     **Justification:** The grammar is **not LL(1)**. The intersection of `FIRST(A')` and `FOLLOW(A')` is not disjoint. On lookahead `c`, the parser cannot decide whether to apply the production `A' -> c A'` (based on the FIRST set) or `A' -> ε` (based on the FOLLOW set).
 
-Q27: PCCST601 0000211: Consider the following itemsset and Find out the itemssets obtained from the following GOTO functions: I = { E' $\to$ .E, E $\to$ .E + T | .T, T $\to$ .T * F | .F, F $\to$ .(E) | .id }, GOTO(I, E), GOTO(I, T), GOTO(I, id), GOTO(I, ( )
-A27: The initial set `I` is the state `I0` of the canonical LR(0) collection.
+### Q27: PCCST601 0000211: Consider the following itemsset and Find out the itemssets obtained from the following GOTO functions: I = { E' $\to$ .E, E $\to$ .E + T | .T, T $\to$ .T * F | .F, F $\to$ .(E) | .id }, GOTO(I, E), GOTO(I, T), GOTO(I, id), GOTO(I, ( )
+The initial set `I` is the state `I0` of the canonical LR(0) collection.
     `I0 = { E' -> .E, E -> .E+T, E -> .T, T -> .T*F, T -> .F, F -> .(E), F -> .id }`
     - **GOTO(I0, E):** `CLOSURE({ E' -> E., E -> E.+T })` = `{ E' -> E., E -> E.+T }`
     - **GOTO(I0, T):** `CLOSURE({ E -> T., T -> T.*F })` = `{ E -> T., T -> T.*F }`
     - **GOTO(I0, id):** `CLOSURE({ F -> id. })` = `{ F -> id. }`
     - **GOTO(I0, ():** `CLOSURE({ F -> (.E) })` = `{ F -> (.E), E -> .E+T, E -> .T, T -> .T*F, T -> .F, F -> .(E), F -> .id }` which is a new state containing the initial set of items, but within the context of parentheses.
 
-Q28: PCCST601 0000213: Find the FIRST & FOLLOW the following grammar: A $\to$ Ab | aC, B $\to$ BaBb | BA, C $\to$ bC | BA
-A28: The grammar as written has non-terminating productions. `B`'s productions all start with `B`, meaning any derivation from `B` will loop infinitely without producing terminals. The language generated by `B` is empty.
+### Q28: PCCST601 0000213: Find the FIRST & FOLLOW the following grammar: A $\to$ Ab | aC, B $\to$ BaBb | BA, C $\to$ bC | BA
+The grammar as written has non-terminating productions. `B`'s productions all start with `B`, meaning any derivation from `B` will loop infinitely without producing terminals. The language generated by `B` is empty.
     Assuming this is intentional (a trick question) or a typo:
     `FIRST(B) = {}` (empty set)
     `FIRST(C) = {b}` (since `FIRST(B)` is empty)
     `FIRST(A) = {a}` (from `A -> aC`)
     `FOLLOW(A)`: Assuming `A` is start, `$` is in `FOLLOW(A)`. `A` is followed by `A` in `B->BA`, and by `b` in `A->Ab`. This is complex due to recursion. Given the flawed nature, a definitive FOLLOW set is problematic.
 
-Q29: PCCST601 0000214: Find the FIRST & FOLLOW the following grammar: A $\to$ Ba | Baa, B $\to$ Abb
-A29: This grammar has mutual recursion (`A` depends on `B` and `B` depends on `A`) with no terminal-only exit rule. No terminal string can ever be generated. The language is empty.
+### Q29: PCCST601 0000214: Find the FIRST & FOLLOW the following grammar: A $\to$ Ba | Baa, B $\to$ Abb
+This grammar has mutual recursion (`A` depends on `B` and `B` depends on `A`) with no terminal-only exit rule. No terminal string can ever be generated. The language is empty.
     `FIRST(A) = FIRST(B)`
     `FIRST(B) = FIRST(A)`
     Therefore, `FIRST(A) = {}` and `FIRST(B) = {}`.
     `FOLLOW(A) = { $ }` (if start symbol).
     `FOLLOW(B) = {a}`.
 
-Q30: PCCST601 0000215: Find the FIRST & FOLLOW the following grammar: S $\to$ Aa | Bb, A $\to$ Aa | Abc | c | Sb, B $\to$ bb
+### Q30: PCCST601 0000215: Find the FIRST & FOLLOW the following grammar: S $\to$ Aa | Bb, A $\to$ Aa | Abc | c | Sb, B $\to$ bb
 A30:
     **FIRST sets:**
     `FIRST(B) = {b}`
@@ -443,8 +436,7 @@ A30:
     `FOLLOW(B) = {b}` (from `S -> Bb`)
     `FOLLOW(A) = {a, b}` (`a` from `S->Aa`, `b` from `A->Abc`).
 
-Q31: PCCST601 0000216: Find the FIRST & FOLLOW the following grammar: S $\to$ AA | 0, A $\to$ SS | 1
-A31:
+### Q31: PCCST601 0000216: Find the FIRST & FOLLOW the following grammar: S $\to$ AA | 0, A $\to$ SS | 1
     **FIRST sets:**
     `FIRST(S) = FIRST(A) U {0}`
     `FIRST(A) = FIRST(S) U {1}`
@@ -457,8 +449,7 @@ A31:
     `FOLLOW(S) = { $ } U ({0, 1} U FOLLOW(S))`. So, `FOLLOW(S) = {$, 0, 1}`.
     `FOLLOW(A) = {0, 1} U {$, 0, 1} = {$, 0, 1}`.
 
-Q32: PCCST601 0000217: Find the FIRST & FOLLOW the following grammar: S $\to$ Abc, A $\to$ Aa | Ad | b, B $\to$ Bd | e, C $\to$ Cc | g
-A32:
+### Q32: PCCST601 0000217: Find the FIRST & FOLLOW the following grammar: S $\to$ Abc, A $\to$ Aa | Ad | b, B $\to$ Bd | e, C $\to$ Cc | g
     **FIRST sets:**
     `FIRST(A) = {b}` (after accounting for left recursion)
     `FIRST(B) = {e}`
@@ -470,8 +461,8 @@ A32:
     `FOLLOW(B) = { $ }` (B is not reachable from S, so FOLLOW is based on it being a start symbol)
     `FOLLOW(C) = { $ }` (C is not reachable from S)
 
-Q33: PCCST601 0000218: Find the FIRST & FOLLOW the following grammar: A $\to$ c | s&s | i<i | i4A, S $\to$ Sa | aSSb | $\epsilon$
-A33: These are two separate grammars.
+### Q33: PCCST601 0000218: Find the FIRST & FOLLOW the following grammar: A $\to$ c | s&s | i<i | i4A, S $\to$ Sa | aSSb | $\epsilon$
+These are two separate grammars.
     **Grammar 1:** `A -> c | s&s | i<i | i4A` (Assuming `i4A` is a typo for `iA`)
     `FIRST(A) = {c, s, i}`
     `FOLLOW(A) = { $ }` (Assuming A is the start symbol)
@@ -479,13 +470,12 @@ A33: These are two separate grammars.
     `FIRST(S) = {a, ε}`
     `FOLLOW(S) = { $, a, b }` (`a` from `S->Sa`, `b` from `S->aSSb`)
 
-Q34: PCCST601 0000219: Convert the following regular expression to a DFA: x(yxx | y + x)*
-A34: Assuming `+` means union (`|`), the expression is `x(yxx | y | x)*`. The conversion is a standard two-step process:
+### Q34: PCCST601 0000219: Convert the following regular expression to a DFA: x(yxx | y + x)*
+Assuming `+` means union (`|`), the expression is `x(yxx | y | x)*`. The conversion is a standard two-step process:
     1.  **NFA Construction (Thompson's Algorithm):** An NFA is built by combining smaller NFAs for `x`, `y`, `yxx` using concatenation, union (`|`), and Kleene star (`*`) operations.
     2.  **NFA to DFA Conversion (Subset Construction):** A DFA is constructed where each DFA state corresponds to a set of NFA states. The process starts with the ε-closure of the NFA's start state and systematically computes transitions for each input symbol (`x`, `y`) to new sets of NFA states, until no new DFA states are generated. The resulting DFA would be complex to draw in text but the process is algorithmic.
 
-Q35: PCCST601 0000222: What is the drawback of CLR parsing? How do we overcome it in LALR parsing? Write down the steps to convert a CLR parsing table to LALR parsing table.
-A35:
+### Q35: PCCST601 0000222: What is the drawback of CLR parsing? How do we overcome it in LALR parsing? Write down the steps to convert a CLR parsing table to LALR parsing table.
     **Drawback of CLR Parsing:** The main drawback of Canonical LR (CLR) parsing is the large number of states it generates. This is because CLR states distinguish between items not only by their core production but also by their lookahead terminal. This leads to very large parsing tables, which can be impractical.
     **How LALR Overcomes It:** Look-Ahead LR (LALR) parsing reduces the table size by merging CLR states that have the same set of core items (i.e., the same productions and dot positions), ignoring the lookaheads. The lookaheads of the merged state become the union of the original lookaheads.
     **Steps to Convert CLR to LALR:**
@@ -494,8 +484,8 @@ A35:
     3.  Merge these sets into a single new state. The new state has the common core and the union of the lookaheads. In the example, the merged state would be `{[C -> .cC, c/d/$]}`.
     4.  Reconstruct the GOTO graph and the parsing table using the new, smaller set of LALR states.
 
-Q36: PCCST601 0000223: Construct an equivalent NFA of the following regular expression: $(0+1)\(00+11)0\*(1)\*$. Convert that NFA to its equivalent DFA?
-A36: The process involves two main stages:
+### Q36: PCCST601 0000223: Construct an equivalent NFA of the following regular expression: $(0+1)\(00+11)0\*(1)\*$. Convert that NFA to its equivalent DFA?
+The process involves two main stages:
     **1. Regular Expression to NFA (Thompson's Construction):**
     - Build NFAs for the basic components (`0`, `1`).
     - Use the union operation for `(0+1)` and `(00+11)`.
@@ -508,8 +498,7 @@ A36: The process involves two main stages:
     - Repeat this process for all new DFA states until no new states are created.
     - Mark any DFA state that contains an accepting state of the NFA as an accepting state. This process is algorithmic but too lengthy to draw out fully in text.
 
-Q37: PCCST601 0000257: a) Optimize the following C code: count=0; while(count++ < 20) { increment= 2*count; result = increment; }. b) Explain about: Dead code elimination.
-A37:
+### Q37: PCCST601 0000257: a) Optimize the following C code: count=0; while(count++ < 20) { increment= 2*count; result = increment; }. b) Explain about: Dead code elimination.
     **a) Code Optimization:**
     Original code:
     ```c
@@ -529,8 +518,7 @@ A37:
     ```
     **b) Dead Code Elimination:** This is an optimization that removes code that does not affect the program's output. This includes unreachable code (e.g., code in an `if (false)` block) and dead stores, where a variable is assigned a value that is never subsequently used.
 
-Q38: PCCST601 0000258: a) What is the purpose of code optimization? Explain in detail about Peephole Optimization with examples. b) Define: Loop optimization.
-A38:
+### Q38: PCCST601 0000258: a) What is the purpose of code optimization? Explain in detail about Peephole Optimization with examples. b) Define: Loop optimization.
     **a) Purpose of Code Optimization and Peephole Optimization:**
     The **purpose of code optimization** is to transform code to improve its performance (making it run faster) and/or reduce its resource consumption (like memory or disk space). 
     **Peephole Optimization** is a local optimization technique that examines a small, sliding window of instructions (the "peephole") and replaces them with a shorter or faster sequence.
@@ -539,14 +527,14 @@ A38:
     - **Redundant Load/Store Elimination:** Removing `MOV R0, x` followed by `MOV x, R0` if `x` hasn't changed.
     **b) Loop Optimization:** A class of optimization techniques focused on making loops more efficient, since programs spend most of their time in loops. Key techniques include moving loop-invariant code out of the loop, eliminating redundant induction variables, and loop unrolling to reduce overhead.
 
-Q39: PCCST601 0000259: Explain the machine-dependent and independent techniques.
-A39: Code optimization techniques are classified into two types:
+### Q39: PCCST601 0000259: Explain the machine-dependent and independent techniques.
+Code optimization techniques are classified into two types:
     **1. Machine-Independent Optimization:** This phase improves the intermediate code without knowledge of the target machine's architecture. It focuses on logical improvements to the program.
     **Examples:** Common Subexpression Elimination, Constant Folding, Dead Code Elimination, Loop-invariant Code Motion.
     **2. Machine-Dependent Optimization:** This phase uses specific features of the target machine's instruction set and architecture to improve the generated code.
     **Examples:** Register Allocation (using CPU registers efficiently), Instruction Scheduling (reordering instructions to avoid CPU pipeline stalls), and using specific machine idioms or addressing modes.
 
-Q40: PCCST601 0000260: a) What is an activation record? Explain how it is related with run time storage organization. b) Give the applications of DAG.
+### Q40: PCCST601 0000260: a) What is an activation record? Explain how it is related with run time storage organization. b) Give the applications of DAG.
 A40:
     **a) Activation Record and Runtime Storage:**
     An **activation record** (or stack frame) is a block of memory on the runtime stack that stores information for a single function call. It is the core of runtime storage organization for procedural languages. When a function is called, a new record is pushed onto the stack; when it returns, the record is popped.
@@ -556,8 +544,7 @@ A40:
     1.  **Identifying Common Subexpressions:** A DAG naturally represents shared computations. If a subexpression appears multiple times, it becomes a single node with multiple parents, making it easy to compute once and reuse.
     2.  **Optimizing Basic Blocks:** It helps generate efficient three-address code by reordering instructions and eliminating redundant steps.
 
-Q41: PCCST601 0000261: a. Discuss the various issues in code generation with examples. b. Write short notes on basic blocks and flow graphs.
-A41:
+### Q41: PCCST601 0000261: a. Discuss the various issues in code generation with examples. b. Write short notes on basic blocks and flow graphs.
     **a) Issues in Code Generation:**
     1.  **Instruction Selection:** Choosing the best machine instructions to implement intermediate code. For `a = a + 1`, a generic `ADD` or a more efficient `INC` instruction might be available.
     2.  **Register Allocation:** Deciding which variables to keep in the limited number of fast CPU registers to minimize slow memory access.
@@ -566,11 +553,10 @@ A41:
     - **Basic Block:** A sequence of consecutive instructions where control flow enters at the beginning and leaves at the end without branching, except possibly at the end.
     - **Flow Graph:** A directed graph where nodes are basic blocks and edges represent the flow of control between them. Flow graphs are essential for performing global optimizations and data-flow analysis.
 
-Q42: PCCST601 0000262: a) Define triples, indirect triples and quadruples. b) Write three codes for $x=f(a[i, z])$ with detail explanation.
-A42:
-    **a) Triples, Indirect Triples, and Quadruples:**
+### Q42: PCCST601 0000262: a) Define triples, indirect triples and quadruples. b) Write three codes for $x=f(a[i, z])$ with detail explanation.
+    **a) Triples, Indirect Triples, and ### Quadruples:**
     These are three-address intermediate representations.
-    1.  **Quadruples:** Have four fields: `(op, arg1, arg2, result)`. Example: `(+, y, z, t1)`. They are easy to optimize but can be verbose.
+    1.  **### Quadruples:** Have four fields: `(op, arg1, arg2, result)`. Example: `(+, y, z, t1)`. They are easy to optimize but can be verbose.
     2.  **Triples:** Have three fields: `(op, arg1, arg2)`. Results are referred to by their position. Example: `(0): (+, y, z)`. `(1): (-, x, (0))`. Moving code is difficult as it requires updating all references.
     3.  **Indirect Triples:** A list of pointers to triples. Code motion is achieved by reordering the pointers, not the triples themselves, solving the issue with standard triples.
     **b) Three-Address Code for `x = f(a[i, z])`:**
@@ -586,8 +572,7 @@ A42:
     x = t6                // Assign return value to x
     ```
 
-Q43: PCCST601 0000263: a) Write a note on the specification of a simple type checker. b) List the various ways of calling the procedures. Explain in detail.
-A43:
+### Q43: PCCST601 0000263: a) Write a note on the specification of a simple type checker. b) List the various ways of calling the procedures. Explain in detail.
     **a) Specification of a Simple Type Checker:**
     A type checker verifies that the types in a program are used according to the language's rules. It works by assigning a type expression to each component of the program. It uses rules to synthesize types (e.g., `int + int = int`) and check for consistency (e.g., in `if (E) S`, `E` must be boolean). If a rule is violated, a type error is reported.
     **b) Ways of Calling Procedures (Parameter Passing):**
@@ -596,8 +581,7 @@ A43:
     3.  **Call by Value-Result:** The argument's value is copied in at the start, and its final value is copied back out when the function returns.
     4.  **Call by Name:** The argument expression is textually substituted for the parameter and re-evaluated every time it is used inside the function.
 
-Q44: PCCST601 0000264: a) How would you convert the following into intermediate code. (i) Assignments statements. (ii) Array elements. b) Describe the method of generating syntax directed definition for control Statements.
-A44:
+### Q44: PCCST601 0000264: a) How would you convert the following into intermediate code. (i) Assignments statements. (ii) Array elements. b) Describe the method of generating syntax directed definition for control Statements.
     **a) Conversion to Intermediate Code:**
     **(i) Assignments statements:** A statement like `x = y + z * 60;` is broken into a sequence of three-address instructions: `t1 = 60; t2 = z * t1; t3 = y + t2; x = t3;`.
     **(ii) Array elements:** Accessing `y = a[i]` requires calculating the memory address: `t1 = i * element_width; t2 = base_address(a) + t1; y = *t2;`.
